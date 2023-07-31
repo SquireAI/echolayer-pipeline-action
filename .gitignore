@@ -1,0 +1,11 @@
+
+.idea
+.run
+node_modules
+.DS_Store
+.docker
+.env
+environments
+*.pem
+*.crt
+logs
