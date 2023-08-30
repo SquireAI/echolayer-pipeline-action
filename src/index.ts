@@ -1,16 +1,21 @@
-import { getInput } from "@actions/core";
-import { context, getOctokit } from "@actions/github";
+import { configuration, discoveryPipeline } from "echolayer-pipeline-lib";
+import { getInputConfiguration } from "./config";
+import { createPR } from "./git";
 
-type GithubContext = typeof context;
-
-const inputName = getInput("name");
-
-greet(inputName, getRepoUrl(context));
-
-function greet(name: string, repoUrl: string) {
-  console.log(`'Hello ${name}! You are running a GH Action in ${repoUrl}'`);
+async function runAction(){
+	const options: configuration = getInputConfiguration();
+	try {
+		await discoveryPipeline(options);
+	} catch (e) {
+		console.log(`Error running pipeline: ${e}`);
+		return;
+	}
+	try {
+		await createPR(options);
+	} catch (e) {
+		console.log(`Error creating PR: ${e}`);
+		return;
+	}
 }
 
-function getRepoUrl({ repo, serverUrl }: GithubContext): string {
-  return `${serverUrl}/${repo.owner}/${repo.repo}`;
-}
+runAction();
