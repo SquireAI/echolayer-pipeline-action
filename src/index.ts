@@ -7,7 +7,7 @@ async function runAction(){
 	try {
 		await discoveryPipeline(options);
 	} catch (e) {
-		console.log(`Error running pipeline: ${e}`);
+		console.error(e);
 		return;
 	}
 	try {

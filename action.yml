@@ -1,13 +1,28 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  apiPath:
+    description: 'Address of the EchoLayer API'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  apiKey:
+    description: 'API Key for the EchoLayer API'
+    required: true
+  branch:
+    description: 'The main branch of the repository'
+    required: false
+    default: 'main'
+  pullBranchName:
+    description: 'Branch name for any pull requests created'
+    required: true
+    default: 'EchoLayerPipeline'
+  commitPrefix:
+    description: 'A prefix for the commit message'
+    required: true
+    default: '*chore*'
+  moduleGlob:
+    description: 'Pattern to match the catalog-info files'
+    required: true
+    default: '**/catalog-info.yaml'
 runs:
   using: 'node16'
   main: 'dist/index.js'
