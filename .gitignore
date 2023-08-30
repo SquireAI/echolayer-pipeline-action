@@ -10,3 +10,4 @@ environments
 *.crt
 logs
 build
+*.tgz
