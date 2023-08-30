@@ -1,20 +1,17 @@
-on: [push]
+on: [merge_group, workflow_dispatch]
 
 jobs:
-  hello_world_job:
+  echo_layer_pipeline:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Import Backstage Catalog to EchoLayer
     steps:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Hello world action step
+      - name: Sync Backstage Catalog
         uses: ./ # Uses an action in the root directory
-        id: hello
         with:
-          name: 'EchoLayer'
-          customComponents: '["ghurl1", "ghurl2"]'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          apiPath: "http://api.echo-layer.com/api"
+          apiKey: ${{ secrets.ECHOLAYER_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'EchoLayer Pipeline Import'
+description: 'Import Data into EchoLayer'
 inputs:
   apiPath:
     description: 'Address of the EchoLayer API'
@@ -13,15 +13,15 @@ inputs:
     default: 'main'
   pullBranchName:
     description: 'Branch name for any pull requests created'
-    required: true
+    required: false
     default: 'EchoLayerPipeline'
   commitPrefix:
     description: 'A prefix for the commit message'
-    required: true
+    required: false
     default: '*chore*'
   moduleGlob:
     description: 'Pattern to match the catalog-info files'
-    required: true
+    required: false
     default: '**/catalog-info.yaml'
 runs:
   using: 'node20'

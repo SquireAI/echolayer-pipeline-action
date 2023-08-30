@@ -15,17 +15,11 @@ export async function createPR(options: configuration){
 		console.log(`No changes. Skipping PR creation.`);
 		return;
 	}
-	try {
-		await octokit.pulls.create({
-			owner,
-			repo,
-			head: options.pullBranchName,
-			base: options.branch,
-			title: `${options.commitPrefix} Updates from EchoLayer Pipeline`,
-		});
-	} catch	(e) {
-		console.log(`Error creating PR: ${e}`);
-		return;
-	}
-
+	await octokit.pulls.create({
+		owner,
+		repo,
+		head: options.pullBranchName,
+		base: options.branch,
+		title: `${options.commitPrefix} Updates from EchoLayer Pipeline`,
+	});
 }
