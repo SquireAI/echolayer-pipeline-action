@@ -7,10 +7,13 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
-    "@vercel/ncc": "^0.36.1",
+    "@backstage/catalog-model": "file:backstage-catalog-model.tgz",
+    "@octokit/action": "^6.0.5",
+    "echolayer-pipeline-lib": "file:echolayer-pipeline-lib-1.0.0.tgz",
     "typescript": "^5.1.6"
   },
   "devDependencies": {
-    "@types/node": "^20.4.5"
+    "@types/node": "^20.4.5",
+    "@vercel/ncc": "^0.36.1"
   }
 }
