@@ -43,7 +43,7 @@ This environment variable calls for your EchoLayer API key which you can obtain 
 2. Once created, you’ll be redirected to the homepage for your organization in EchoLayer. Click on the link to visit the [API Key page](https://app.echolayer.com/app/account/api-keys)
     1. Generate a new API key
     2. Click the copy button
-    3. Paste the value of the token temporarily somewhere you’ll have access to as you’ll need it momentarily (or just leave this open so you can come back and copy it)
+    3. Add the apiKey to a Repository Secret named ECHOLAYER_API_KEY
 
 ## Contributing
 
