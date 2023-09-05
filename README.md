@@ -1,6 +1,6 @@
 # Using EchoLayer GitHub Action
 
-## Adding the Action to your Workflow'
+## Adding the Action to your Workflow
 
 The EchoLayer GitHub Component Discovery action is available to you inside your existing workflows. You can add it to any workflow you want to use it in. Here’s an example of a workflow that will run the action on every push to the main branch of your repository:
 
