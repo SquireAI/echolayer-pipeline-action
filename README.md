@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Import Backstage Catalog to EchoLayer
     steps:
-      # To use this repository's private action,
-      # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
       - name: Sync Backstage Catalog
