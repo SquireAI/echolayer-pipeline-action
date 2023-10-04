@@ -1,6 +1,6 @@
 import { context } from "@actions/github";
 import { Octokit } from "@octokit/action";
-import { configuration } from "echolayer-pipeline-lib";
+import { configuration } from "@echolayer/echolayer-pipeline-lib";
 
 export async function createPR(options: configuration){
 	const octokit = new Octokit();
@@ -19,7 +19,7 @@ export async function createPR(options: configuration){
 		owner,
 		repo,
 		head: options.pullBranchName,
-		base: options.branch,
+		base: options.defaultBranch,
 		title: `${options.commitPrefix} Updates from EchoLayer Pipeline`,
 	});
 }

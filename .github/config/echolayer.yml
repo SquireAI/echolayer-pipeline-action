@@ -1,0 +1,5 @@
+---
+- type: backstage
+  componentType:
+    name: BackstageImports
+- type: json
