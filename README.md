@@ -50,3 +50,13 @@ This environment variable calls for your EchoLayer API key which you can obtain 
 Make changes to files in `/src`
 
 Run `npm run build`
+
+## Local Development
+
+`cp .env.example .env`
+
+Set `ECHOLAYER_API_TOKEN` or update `INPUT_APIKEY` with your API key
+
+Run `npm run dev`
+
+Other input variables can be set in `.env` with `INPUT_<uppercase_name>`

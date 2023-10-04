@@ -1,22 +1,30 @@
 import { InputOptions, getInput } from "@actions/core";
 import { context } from "@actions/github";
-import { BackstageOptions, configuration, defaultBackstageOptions } from "echolayer-pipeline-lib";
+import { configuration, parseFile, validateMinimalModuleOptions, moduleDefaults } from "@echolayer/echolayer-pipeline-lib";
+import _ from "lodash";
 
 export function getInputConfiguration(): configuration {
-	const backstageOptions: BackstageOptions = {
-		...defaultBackstageOptions,
-		moduleGlob: getInputWithDefault("moduleGlob", defaultBackstageOptions.moduleGlob),
-	}
+	const moduleConfigPath = getInputWithDefault("moduleConfigPath", ".github/config/echolayer.yml");
+	console.log(`Using module config path: ${moduleConfigPath}`);
+	const fileContents = parseFile(moduleConfigPath);
+
+	const moduleInputs = validateMinimalModuleOptions(fileContents);
+	const moduleOptions = moduleInputs.map((module) => {
+		// Apply any module inputs to the defaults
+		// Start with a blank object to avoid mutating the defaults
+		return _.merge({}, moduleDefaults[module.type], module);
+	});
+	console.log("Using module config: ", moduleOptions);
 	return {
 		basePath: getInputWithDefault("GITHUB_WORKSPACE", process.cwd()),
 		apiPath: getInput("apiPath", { required: true }),
 		apiKey: getInput("apiKey", { required: true }),
-		branch: getInputWithDefault("branch", "main"),
-		repoName: context.repo.repo,
-		repoUrl: `${context.serverUrl}/${context.repo.owner}`,
+		defaultBranch: getInputWithDefault("branch", "main"),
+		remoteUrl: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}.git`,
+		hostName: "GitHub",
 		pullBranchName: getInputWithDefault("pullBranchName", "EchoLayerPipeline"),
 		commitPrefix: getInputWithDefault("commitPrefix", "*chore*"),
-		modules: [ backstageOptions ]
+		modules: moduleOptions
 	}
 }
 

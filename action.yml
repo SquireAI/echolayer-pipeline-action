@@ -7,6 +7,10 @@ inputs:
   apiKey:
     description: 'API Key for the EchoLayer API'
     required: true
+  moduleConfigPath:
+    description: 'Location of the module config file'
+    required: false
+    default: '.github/config/echolayer.yml'
   branch:
     description: 'The main branch of the repository'
     required: false
@@ -19,10 +23,6 @@ inputs:
     description: 'A prefix for the commit message'
     required: false
     default: '*chore*'
-  moduleGlob:
-    description: 'Pattern to match the catalog-info files'
-    required: false
-    default: '**/catalog-info.yaml'
 runs:
   using: 'node20'
   main: 'dist/index.js'
