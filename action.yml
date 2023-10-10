@@ -23,6 +23,9 @@ inputs:
     description: 'A prefix for the commit message'
     required: false
     default: '*chore*'
+  GITHUB_TOKEN:
+    description: 'Github token with write permissions to the repository'
+    required: false
 runs:
   using: 'node20'
   main: 'dist/index.js'
