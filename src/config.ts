@@ -17,9 +17,7 @@ export function getInputConfiguration(): configuration {
 		return _.merge({}, moduleDefaults[module.type], module);
 	});
 	console.log("Using module config: ", moduleOptions);
-	const accessToken = getInput("accessToken", { required: true });
-	const octokit = new Octokit({ auth: accessToken });
-	const githubClient = new GithubClient(octokit);
+	const githubClient = new GithubClient(new Octokit());
 	return {
 		basePath: getInputWithDefault("GITHUB_WORKSPACE", process.cwd()),
 		apiPath: getInput("apiPath", { required: true }),
