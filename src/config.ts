@@ -1,7 +1,9 @@
 import { InputOptions, getInput } from "@actions/core";
 import { context } from "@actions/github";
 import { configuration, parseFile, validateMinimalModuleOptions, moduleDefaults } from "@echolayer/echolayer-pipeline-lib";
+import { Octokit } from "@octokit/action";
 import _ from "lodash";
+import { GithubClient } from "./github.client";
 
 export function getInputConfiguration(): configuration {
 	const moduleConfigPath = getInputWithDefault("moduleConfigPath", ".github/config/echolayer.yml");
@@ -15,13 +17,15 @@ export function getInputConfiguration(): configuration {
 		return _.merge({}, moduleDefaults[module.type], module);
 	});
 	console.log("Using module config: ", moduleOptions);
+	const githubClient = new GithubClient(new Octokit());
 	return {
 		basePath: getInputWithDefault("GITHUB_WORKSPACE", process.cwd()),
 		apiPath: getInput("apiPath", { required: true }),
 		apiKey: getInput("apiKey", { required: true }),
 		defaultBranch: getInputWithDefault("branch", "main"),
 		remoteUrl: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}.git`,
-		hostName: "GitHub",
+		source: "GitHub",
+		gitClient: githubClient,
 		pullBranchName: getInputWithDefault("pullBranchName", "EchoLayerPipeline"),
 		commitPrefix: getInputWithDefault("commitPrefix", "*chore*"),
 		modules: moduleOptions

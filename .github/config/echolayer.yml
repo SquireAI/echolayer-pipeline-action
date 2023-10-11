@@ -1,5 +1,5 @@
 ---
-- type: backstage
+- type: terraform
   componentType:
     name: BackstageImports
 - type: json

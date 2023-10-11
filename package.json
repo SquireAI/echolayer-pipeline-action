@@ -3,12 +3,12 @@
     "build": "npm run tsc && npm run ncc",
     "tsc": "./node_modules/typescript/bin/tsc",
     "ncc": "./node_modules/@vercel/ncc/dist/ncc/cli.js  build build/index.js --license licenses.txt",
-	"dev": "source .env && node dist/index.js"
+    "dev": "source .env && node dist/index.js"
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
-    "@echolayer/echolayer-pipeline-lib": "1.0.1-alpha-cd641f42.0",
+    "@echolayer/echolayer-pipeline-lib": "^1.0.1-alpha-2e477578.0",
     "@octokit/action": "^6.0.5",
     "typescript": "^5.1.6"
   },
