@@ -20,7 +20,7 @@ jobs:
         uses: echolayer/echolayer-pipeline-action@HEAD
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          apiPath: "https://saumil.ngrok.dev/api"
+          apiPath: "https://api.echolayer.com/api"
           apiKey: ${{ secrets.ECHOLAYER_API_KEY }}
 ```
 
