@@ -12,6 +12,6 @@ jobs:
       - name: Sync Backstage Catalog
         uses: ./ # Uses an action in the root directory
         with:
-          apiPath: "http://api.echo-layer.com/api"
+          apiPath: "http://api.echolayer.com/api"
           apiKey: ${{ secrets.ECHOLAYER_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
