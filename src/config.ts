@@ -25,7 +25,6 @@ export function getInputConfiguration(): configuration {
 		defaultBranch: getInputWithDefault("branch", "main"),
 		remoteUrl: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}.git`,
 		source: "GitHub",
-		gitClient: githubClient,
 		pullBranchName: getInputWithDefault("pullBranchName", "EchoLayerPipeline"),
 		commitPrefix: getInputWithDefault("commitPrefix", "*chore*"),
 		modules: moduleOptions
