@@ -1,0 +1,17 @@
+name: Sync EchoLayer
+
+on: [merge_group, workflow_dispatch, push]
+
+jobs:
+  echolayer_pipeline:
+    runs-on: ubuntu-latest
+    name: Sync
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Sync Backstage Catalog
+        uses: ./
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          apiPath: "https://saumil.ngrok.dev/api"
+          apiKey: ${{ secrets.ECHOLAYER_API_KEY }}
