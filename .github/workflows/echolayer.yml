@@ -16,5 +16,4 @@ jobs:
         uses: ./
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          apiPath: "https://api.echolayer.com/api"
           apiKey: ${{ secrets.ECHOLAYER_API_KEY }}
