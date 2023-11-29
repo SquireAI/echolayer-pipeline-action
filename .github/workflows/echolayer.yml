@@ -1,0 +1,20 @@
+name: Sync EchoLayer
+
+on: [merge_group, workflow_dispatch, push]
+
+jobs:
+  echolayer_pipeline:
+    runs-on: ubuntu-latest
+    name: Sync
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          sparse-checkout: ""
+      - name: Sync EchoLayer
+        uses: ./
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          apiPath: "https://api-staging.echolayer.com/api"
+          apiKey: ${{ secrets.ECHOLAYER_API_KEY }}

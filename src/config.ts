@@ -20,14 +20,14 @@ export function getInputConfiguration(): configuration {
 	const githubClient = new GithubClient(new Octokit());
 	return {
 		basePath: getInputWithDefault("GITHUB_WORKSPACE", process.cwd()),
-		apiPath: getInput("apiPath", { required: true }),
+		apiPath: getInputWithDefault("apiPath", "https://api.echolayer.com/api"),
 		apiKey: getInput("apiKey", { required: true }),
 		defaultBranch: getInputWithDefault("branch", "main"),
 		remoteUrl: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}.git`,
 		source: "GitHub",
-		gitClient: githubClient,
 		pullBranchName: getInputWithDefault("pullBranchName", "EchoLayerPipeline"),
 		commitPrefix: getInputWithDefault("commitPrefix", "*chore*"),
+		daysToAnalyze: Number(getInputWithDefault("daysToAnalyze", "365")),
 		modules: moduleOptions
 	}
 }
