@@ -8,7 +8,7 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
-    "@echolayer/echolayer-pipeline-lib": "^1.0.1-alpha-3257842f.0",
+    "@echolayer/echolayer-pipeline-lib": "/Users/saumil/repos/echolayer/echolayer-pipeline-lib/build",
     "@octokit/action": "^6.0.5",
     "lodash": "^4.17.21",
     "tslib": "^2.6.2",
