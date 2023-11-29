@@ -20,8 +20,8 @@ export function getInputConfiguration(): configuration {
 	const githubClient = new GithubClient(new Octokit());
 	return {
 		basePath: getInputWithDefault("GITHUB_WORKSPACE", process.cwd()),
-		apiPath: getInput("apiPath", { required: true }),
-		apiKey: getInputWithDefault("apiKey", "https://api.echolayer.com/api"),
+		apiPath: getInputWithDefault("apiPath", "https://api.echolayer.com/api"),
+		apiKey: getInput("apiKey", { required: true }),
 		defaultBranch: getInputWithDefault("branch", "main"),
 		remoteUrl: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}.git`,
 		source: "GitHub",
