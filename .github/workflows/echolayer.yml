@@ -16,5 +16,5 @@ jobs:
         uses: ./
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          apiPath: "https://saumil.ngrok.dev"
+          apiPath: "https://saumil.ngrok.dev/api"
           apiKey: ${{ secrets.ECHOLAYER_API_KEY }}
