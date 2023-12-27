@@ -9,7 +9,7 @@
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
     "@echolayer/echolayer-pipeline-lib": "^1.0.1-alpha-9126826f.0",
-    "@octokit/action": "^6.0.5",
+    "@octokit/action": "^6.0.7",
     "lodash": "^4.17.21",
     "tslib": "^2.6.2",
     "typescript": "^5.1.6"
